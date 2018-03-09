@@ -1,6 +1,14 @@
-export default {
-  name: "my-button",
+<template>
+  <button :style="buttonStyles" @click="onClick">
+  <slot></slot>
+  </button>
+</template>
 
+
+<script lang="ts">
+import Vue from "vue";
+export default Vue.extend({
+  name: "my-button",
   data() {
     return {
       buttonStyles: {
@@ -14,16 +22,10 @@ export default {
       }
     };
   },
-
-  template: `
-    <button :style="buttonStyles" @click="onClick">
-      <slot></slot>
-    </button>
-  `,
-
   methods: {
     onClick() {
       this.$emit("click");
     }
   }
-};
+});
+</script>
